@@ -1,0 +1,64 @@
+create table PROFESSOR(
+   id_prof varchar(7),
+   login_prof varchar2(20),
+   senha_prof varchar2(20),
+   nome_prof varchar2(20),
+   turma_prof varchar2(10),
+   escola_prof varchar2(40),
+   email_prof varchar2(40),
+   primary key (id_prof)
+   );
+
+
+create table ALUNO(
+   id_alu varchar2(7),
+   nome_alu varchar2(40),
+   turma_alu varchar2(10),
+   escola_alu varchar2(40),
+   email_alu varchar2(40),
+   primary key (id_alu)
+   );
+
+ create table ATIVIDADE(
+   id_atv varchar(7),
+   nome_atv varchar2(40),
+   materia_atv varchar2(30),
+   id_prof varchar(7),
+   primary key (id_atv),
+   foreign key (id_prof) REFERENCES PROFESSOR
+   );
+
+ create table GRUPO(
+   id_grup varchar(7),
+   nome_grup varchar2(30),
+   id_alu varchar(7),
+   id_prof varchar(7),
+   id_atv varchar(7),
+   primary key (id_grup),
+   foreign key (id_alu) references ALUNO,
+   foreign key (id_prof) references PROFESSOR,
+   foreign key (id_atv) references ATIVIDADE 
+   );
+
+ create table LINK(
+   id_link varchar2(7),
+   gereador_link varchar2(20),
+   id_prof varchar(7),
+   id_grup varchar(7),
+   primary key (id_link),
+   foreign key (id_prof) references PROFESSOR,	
+   foreign key (id_grup) references GRUPO
+   );
+
+ create table RANKING(
+   id_rank varchar2(7),
+   nome_alu varchar2(40),
+   serie_alu varchar2(10),
+   primary key (id_rank),
+   id_alu varchar(7),
+   id_grup varchar(7),
+   id_atv varchar(7),
+   foreign key (id_alu) references ALUNO,
+   foreign key (id_grup) references GRUPO,
+   foreign key (id_atv) references ATIVIDADE
+  );
