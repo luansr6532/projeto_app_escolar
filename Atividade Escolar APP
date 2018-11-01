@@ -16,6 +16,7 @@ create table ALUNO(
    turma_alu varchar2(10),
    escola_alu varchar2(40),
    email_alu varchar2(40),
+   pontuacao integer,
    primary key (id_alu)
    );
 
@@ -40,25 +41,6 @@ create table ALUNO(
    foreign key (id_atv) references ATIVIDADE 
    );
 
- create table LINK(
-   id_link varchar2(7),
-   gereador_link varchar2(20),
-   id_prof varchar(7),
-   id_grup varchar(7),
-   primary key (id_link),
-   foreign key (id_prof) references PROFESSOR,	
-   foreign key (id_grup) references GRUPO
-   );
 
- create table RANKING(
-   id_rank varchar2(7),
-   nome_alu varchar2(40),
-   serie_alu varchar2(10),
-   primary key (id_rank),
-   id_alu varchar(7),
-   id_grup varchar(7),
-   id_atv varchar(7),
-   foreign key (id_alu) references ALUNO,
-   foreign key (id_grup) references GRUPO,
-   foreign key (id_atv) references ATIVIDADE
-  );
+
+ 
